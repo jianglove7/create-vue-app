@@ -1,15 +1,34 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
-Vue.use(Router)
+import Vue from 'vue';
+import Router from 'vue-router';
+import Layout from '@/components/Layout';
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+      redirect: '/index',
+      meta: {
+        name: '首页',
+      }
+    },
+   
+    {
+      path: '/login',
+      component: () => import('@/pages/loginPage')
+    },
+    {
+      path: '/index',
+      component: () => Layout,
+      children: [
+        {
+          path: '/index',
+          component: () => import('@/pages/index.vue'),
+          meta: {
+            name: '首页',
+          }
+        }
+      ]
+    },
   ]
-})
+});
