@@ -7,13 +7,12 @@
         </div>
         <div class="login_bd">
           <form method="post">
+            
             <div class="row">
-              <label for="username"></label>
-              <input type="text" name="username" v-model="form.userName" @keyup="handleKeyUp($event)">
+              <base-input name="username" v-model="form.userName" @keyup="handleKeyUp($event)"></base-input>
             </div>
             <div class="row">
-              <label for="password"></label>
-              <input type="text" name="password" v-model="form.passWord" @keyup="handleKeyUp($event)">
+              <base-input name="password" v-model="form.passWord" @keyup="handleKeyUp($event)"></base-input>
             </div>
             <div class="row">
               <button type="button" @click="submit()">登陆</button>
@@ -29,6 +28,7 @@
 export default {
   data() {
     return {
+      value: '',
       form: {
         userName: '',
         passWord: ''
